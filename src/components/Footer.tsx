@@ -10,16 +10,16 @@ const Footer: React.FC = () => {
         <Star className="absolute top-8 right-1/4 w-4 h-4 text-yellow-200 animate-pulse" />
         <Star className="absolute top-20 left-1/3 w-6 h-6 text-yellow-200 animate-bounce" />
         <Star className="absolute bottom-12 right-1/3 w-5 h-5 text-yellow-200 animate-pulse" />
-        <Star className="absolute top-1/2 left-1/4 w-4 h-4 text-yellow-200 animate-ping" />
+        
         <Star className="absolute bottom-1/4 right-1/4 w-5 h-5 text-yellow-200 animate-bounce" />
       </div>
 
       {/* Globos animados */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-16 h-16 bg-pink-300 rounded-full opacity-75 animate-bounce"></div>
-        <div className="absolute top-10 right-10 w-24 h-24 bg-yellow-300 rounded-full opacity-75 animate-pulse"></div>
+        <div className="absolute top-8 right-8 w-24 h-24 bg-yellow-300 rounded-full opacity-75 animate-pulse"></div>
         <div className="absolute bottom-10 left-10 w-20 h-20 bg-blue-300 rounded-full opacity-75 animate-bounce"></div>
-        <div className="absolute top-20 left-1/4 w-12 h-12 bg-purple-300 rounded-full opacity-75 animate-pulse"></div>
+        
         <div className="absolute bottom-20 right-1/4 w-16 h-16 bg-green-300 rounded-full opacity-75 animate-bounce"></div>
         <div className="absolute top-1/2 left-1/3 w-10 h-10 bg-red-300 rounded-full opacity-75 animate-ping"></div>
       </div>
