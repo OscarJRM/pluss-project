@@ -4,25 +4,25 @@ import { Star } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#F39200] text-white py-12 relative overflow-hidden">
-      {/* Estrellas decorativas */}
-      <div className="absolute inset-0">
-        <Star className="absolute top-8 right-1/4 w-4 h-4 text-yellow-200 animate-pulse" />
-        <Star className="absolute top-20 left-1/3 w-6 h-6 text-yellow-200 animate-bounce" />
-        <Star className="absolute bottom-12 right-1/3 w-5 h-5 text-yellow-200 animate-pulse" />
-        
-        <Star className="absolute bottom-1/4 right-1/4 w-5 h-5 text-yellow-200 animate-bounce" />
-      </div>
+      <footer className="bg-[#F39200] text-white py-12 relative overflow-hidden">
+        {/* Estrellas decorativas */}
+        <div className="absolute inset-0">
+          <Star className="absolute top-8 right-1/4 w-4 h-4 text-yellow-200 animate-pulse" />
+          <Star className="absolute top-20 left-1/3 w-6 h-6 text-yellow-200 animate-bounce" />
+          <Star className="absolute bottom-12 right-1/3 w-5 h-5 text-yellow-200 animate-pulse" />
+          
+          <Star className="absolute bottom-1/4 right-/4 w-5 h-5 text-yellow-200 animate-bounce" />
+        </div>
 
-      {/* Globos animados */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-16 h-16 bg-pink-300 rounded-full opacity-75 animate-bounce"></div>
-        <div className="absolute top-8 right-8 w-24 h-24 bg-yellow-300 rounded-full opacity-75 animate-pulse"></div>
-        <div className="absolute bottom-10 left-10 w-20 h-20 bg-blue-300 rounded-full opacity-75 animate-bounce"></div>
-        
-        <div className="absolute bottom-20 right-1/4 w-16 h-16 bg-green-300 rounded-full opacity-75 animate-bounce"></div>
-        <div className="absolute top-1/2 left-1/3 w-10 h-10 bg-red-300 rounded-full opacity-75 animate-ping"></div>
-      </div>
+        {/* Globos animados */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-16 h-16 bg-pink-300 rounded-full opacity-75 animate-bounce"></div>
+          <div className="absolute top-8 right-8 w-24 h-24 bg-yellow-300 rounded-full opacity-75 animate-pulse"></div>
+          <div className="absolute bottom-10 left-10 w-20 h-20 bg-blue-300 rounded-full opacity-75 animate-bounce"></div>
+          
+          <div className="absolute bottom-20 right-1/4 w-16 h-16 bg-green-300 rounded-full opacity-75 animate-bounce"></div>
+          
+        </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
