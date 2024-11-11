@@ -7,7 +7,6 @@ import { Phone, MapPin, Facebook, Instagram, Music2 } from 'lucide-react';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Efecto de scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -18,11 +17,10 @@ const Navbar = () => {
 
   return (
     <div className="fixed w-full z-50 transition-all duration-300">
-      {/* Barra superior con información de contacto */}
+      {/* Barra superior */}
       <div className={`bg-[#F39200] text-white transition-all duration-300 ${isScrolled ? 'py-1' : 'py-2'}`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            {/* Información de ubicación */}
             <div className="flex items-center space-x-2 group">
               <MapPin className="w-4 h-4 group-hover:animate-bounce" />
               <span className="text-sm hidden md:inline transform transition-transform duration-300 group-hover:translate-x-1">
@@ -30,9 +28,7 @@ const Navbar = () => {
               </span>
             </div>
 
-            {/* Contacto y redes sociales */}
             <div className="flex items-center space-x-6">
-              {/* Teléfono con animación */}
               <div className="flex items-center space-x-2 group">
                 <Phone className="w-4 h-4 transform transition-transform group-hover:rotate-12" />
                 <span className="text-sm transform transition-transform duration-300 group-hover:scale-105">
@@ -40,7 +36,6 @@ const Navbar = () => {
                 </span>
               </div>
 
-              {/* Redes sociales */}
               <div className="flex space-x-4">
                 <a href="https://facebook.com/PlussFiestas" 
                    target="_blank" 
@@ -66,19 +61,36 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Navbar principal con logo y banderines */}
-      <nav className={`bg-white shadow-md transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}>
-        <div className="container mx-auto px-6 flex items-center justify-between relative">
-          {/* Banderines decorativos */}
-          <div className="absolute top-0 left-0 w-full h-8 bg-transparent flex justify-between overflow-hidden">
-            <div className="bg-[#EF87B5] w-6 h-6 rotate-45 transform origin-bottom-left"></div>
-            <div className="bg-[#FEEB00] w-6 h-6 rotate-45 transform origin-bottom-left"></div>
-            <div className="bg-[#2F97B3] w-6 h-6 rotate-45 transform origin-bottom-left"></div>
-            <div className="bg-[#EF87B5] w-6 h-6 rotate-45 transform origin-bottom-left"></div>
-            <div className="bg-[#FEEB00] w-6 h-6 rotate-45 transform origin-bottom-left"></div>
-            <div className="bg-[#2F97B3] w-6 h-6 rotate-45 transform origin-bottom-left"></div>
-          </div>
+      {/* Navbar principal con guirnalda decorativa */}
+      <nav className={`bg-white shadow-md transition-all duration-300 relative ${isScrolled ? 'pt-6 pb-2' : 'pt-10 pb-4'}`}>
+        {/* Guirnalda de banderines */}
+        <div className="absolute top-0 left-0 w-full flex items-center justify-center overflow-hidden">
+          <svg 
+            className="w-full h-16" 
+            viewBox="0 0 800 40"
+            preserveAspectRatio="none"
+          >
+            {/* Línea decorativa */}
+            <path 
+              d="M0,10 Q100,20 200,10 T400,10 T600,10 T800,10"
+              fill="none"
+              stroke="#FFD700"
+              strokeWidth="2"
+            />
+            
+            {/* Banderines */}
+            {[...Array(15)].map((_, i) => (
+              <polygon
+                key={i}
+                points={`${i * 55 + 10},10 ${i * 55 + 35},35 ${i * 55 + 60},10`}
+                fill={i % 3 === 0 ? '#EF87B5' : i % 3 === 1 ? '#2F97B3' : '#FEEB00'}
+                className="transform origin-top transition-transform hover:scale-105"
+              />
+            ))}
+          </svg>
+        </div>
 
+        <div className="container mx-auto px-6 flex items-center justify-between mt-4">
           {/* Logo */}
           <div className="flex items-center">
             <Image
