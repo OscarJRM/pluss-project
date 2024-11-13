@@ -19,7 +19,7 @@ const Navbar = () => {
     <div className="fixed w-full z-50 transition-all duration-300">
       {/* Barra superior */}
       <div className={`bg-[#F39200] text-white transition-all duration-300 ${isScrolled ? 'py-1' : 'py-2'}`}>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
           <div className="flex justify-between items-center">
             {/* Dirección con enlace a Google Maps */}
             <div className="flex items-center space-x-2 group">
@@ -69,7 +69,7 @@ const Navbar = () => {
 
       {/* Navbar principal */}
       <nav className={`bg-white shadow-md transition-all duration-300 relative ${isScrolled ? 'pt-4 pb-2' : 'pt-6 pb-4'}`}>
-        <div className="container mx-auto px-6 flex items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
             <Image

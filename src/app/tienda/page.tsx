@@ -99,7 +99,7 @@ export default function TiendaPage() {
   };
 
   return (
-    <div className="container mx-auto px-8 py-8 pt-36 bg-gray-100">
+    <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-8 pt-36 bg-gray-100">
       <h1 className="text-3xl font-bold text-center text-[#F39200] mb-8">Tienda</h1>
 
       {/* Carrusel de categorías */}
