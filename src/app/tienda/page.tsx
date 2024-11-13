@@ -1,20 +1,21 @@
 // app/tienda/page.tsx
 "use client";
 import React, { useState } from 'react';
-import CategoriaCard from '@/components/CategoriaCard';
+import Slider from "react-slick";
 import ProductoCard from '@/components/ProductoCard';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const categorias = [
-  { nombre: "Combos descartables de personajes", color: "#EF87B5" },
-  { nombre: "Globos", color: "#F39200" },
-  { nombre: "Decorativos plásticos y de tela", color: "#2F97B3" },
-  { nombre: "Velas", color: "#FEEB00" },
-  { nombre: "Decorativos de papel", color: "#EF87B5" },
-  { nombre: "Piñatas", color: "#F39200" },
-  { nombre: "Ajuar de novios", color: "#2F97B3" },
-  { nombre: "Ajuar de 15 años", color: "#FEEB00" },
-  { nombre: "Tarjetas", color: "#EF87B5" },
-  { nombre: "Juguetería y rellenos", color: "#F39200" }
+  { nombre: "Combos descartables", color: "#EF87B5", imagen: "/images/categoria1.webp" },
+  { nombre: "Globos", color: "#F39200", imagen: "/images/categoria2.webp" },
+  { nombre: "Decorativos plásticos y de tela", color: "#2F97B3", imagen: "/images/categoria3.jpg" },
+  { nombre: "Velas", color: "#FEEB00", imagen: "/images/categoria4.jpg" },
+  { nombre: "Decorativos de papel", color: "#EF87B5", imagen: "/images/categoria5.jpg" },
+  { nombre: "Piñatas", color: "#F39200", imagen: "/images/categoria6.jpg" },
+  { nombre: "Ajuar de novios", color: "#2F97B3", imagen: "/images/categoria7.jpg" },
+  { nombre: "Ajuar de 15 años", color: "#FEEB00", imagen: "/images/categoria8.jpg" },
+  { nombre: "Tarjetas", color: "#EF87B5", imagen: "/images/categoria9.jpg" },
+  { nombre: "Juguetería y rellenos", color: "#F39200", imagen: "/images/categoria10.jpg" }
 ];
 
 const productos = [
@@ -23,6 +24,31 @@ const productos = [
   { id: 3, nombre: "Producto 3", categoria: "Decorativos plásticos y de tela", precio: "$15", color: "#2F97B3", imagen: "/images/product3.jpg" },
   // Agrega más productos con sus imágenes
 ];
+
+// Flechas personalizadas
+function NextArrow(props: any) {
+  const { onClick } = props;
+  return (
+    <button
+      onClick={onClick}
+      className="absolute top-1/2 right-4 transform -translate-y-1/2 text-[#F39200] hover:text-orange-600 z-10"
+    >
+      <ChevronRight size={32} />
+    </button>
+  );
+}
+
+function PrevArrow(props: any) {
+  const { onClick } = props;
+  return (
+    <button
+      onClick={onClick}
+      className="absolute top-1/2 left-4 transform -translate-y-1/2 text-[#F39200] hover:text-orange-600 z-10"
+    >
+      <ChevronLeft size={32} />
+    </button>
+  );
+}
 
 export default function TiendaPage() {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState<string | null>(null);
@@ -35,28 +61,58 @@ export default function TiendaPage() {
     setCategoriaSeleccionada(categoria);
   };
 
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
+  };
+
   return (
     <div className="container mx-auto px-4 py-8 pt-36 bg-white">
-      <h1 className="text-3xl font-bold text-center mb-8">Tienda</h1>
+      <h1 className="text-3xl font-bold text-center text-[#F39200] mb-8">Tienda</h1>
 
-      {/* Lista de categorías */}
-      <div className="flex flex-wrap justify-center gap-4 mb-8">
-        <button
-          onClick={() => manejarFiltrado(null)}
-          className={`p-2 px-4 rounded-lg ${!categoriaSeleccionada ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'}`}
-        >
-          Todas
-        </button>
-        {categorias.map((categoria) => (
-          <button
-            key={categoria.nombre}
-            onClick={() => manejarFiltrado(categoria.nombre)}
-            className={`p-2 px-4 rounded-lg ${categoriaSeleccionada === categoria.nombre ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'}`}
-            style={{ backgroundColor: categoriaSeleccionada === categoria.nombre ? categoria.color : '#f3f3f3' }}
-          >
-            {categoria.nombre}
-          </button>
-        ))}
+      {/* Carrusel de categorías */}
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold text-[#EF87B5] mb-4 text-center">Categorías</h2>
+        <Slider {...settings}>
+          {categorias.map((categoria) => (
+            <div key={categoria.nombre} className="p-2">
+              <div
+                onClick={() => manejarFiltrado(categoria.nombre)}
+                className="p-4 rounded-lg shadow-lg cursor-pointer text-center bg-white h-48 flex flex-col items-center justify-between"
+              >
+                <img src={categoria.imagen} alt={categoria.nombre} className="w-32 h-32 object-cover rounded-md mb-2" />
+                <p className="font-semibold truncate w-full text-center" style={{ color: categoria.color }}>{categoria.nombre}</p>
+              </div>
+            </div>
+          ))}
+        </Slider>
       </div>
 
       {/* Lista de productos */}
