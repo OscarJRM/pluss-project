@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Link from 'next/link';
 import Slider from "react-slick";
 import ProductoCard from '@/components/ProductoCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -18,16 +19,61 @@ const categorias = [
 ];
 
 const productos = [
-  { id: 1, nombre: "Producto 1", categoria: "Combos descartables", precio: "$10", color: "#EF87B5", imagen: "/images/product1.jpg" },
-  { id: 2, nombre: "Producto 2", categoria: "Globos", precio: "$5", color: "#F39200", imagen: "/images/product2.jpg" },
-  { id: 3, nombre: "Producto 3", categoria: "Decorativos plásticos y de tela", precio: "$15", color: "#2F97B3", imagen: "/images/product3.jpg" },
-  { id: 4, nombre: "Producto 4", categoria: "Velas", precio: "$7", color: "#C9572F", imagen: "/images/product4.jpg" },
-  { id: 5, nombre: "Producto 5", categoria: "Decorativos de papel", precio: "$12", color: "#EF87B5", imagen: "/images/product5.jpg" },
-  { id: 6, nombre: "Producto 6", categoria: "Piñatas", precio: "$20", color: "#F39200", imagen: "/images/product6.jpg" },
-  { id: 7, nombre: "Producto 7", categoria: "Ajuar de novios", precio: "$50", color: "#2F97B3", imagen: "/images/product7.jpg" },
-  { id: 8, nombre: "Producto 8", categoria: "Ajuar de 15 años", precio: "$60", color: "#C9572F", imagen: "/images/product8.jpg" },
-  { id: 9, nombre: "Producto 9", categoria: "Tarjetas", precio: "$3", color: "#EF87B5", imagen: "/images/product9.jpg" },
-  { id: 10, nombre: "Producto 10", categoria: "Juguetería y rellenos", precio: "$8", color: "#F39200", imagen: "/images/product10.jpg" }
+  { 
+    id: 1, 
+    nombre: "Combo Descartables de la Vaca Lola", 
+    categoria: "Combos descartables",
+    descripcion: "Combo completo de artículos descartables temáticos de la Vaca Lola para fiestas infantiles.",
+    precio: "$9.50", 
+    color: "#EF87B5",
+    imagen: "/images/combo_vaca_lola.jpg", // Asegúrate de que la imagen esté en la carpeta correcta
+    especificaciones: `
+      Incluye:
+      - Sorpresa: $1.75
+      - Bandeja: $1.75
+      - Platos: $1.50
+      - Invitación: $1.50
+      - Vasos: $1.50
+      - Sombreros: $1.50
+    `
+  },
+  { 
+    id: 2, 
+    nombre: "Combo Descartables de la Minnie", 
+    categoria: "Combos descartables",
+    descripcion: "Combo completo de artículos descartables temáticos de la Vaca Lola para fiestas infantiles.",
+    precio: "$9.50", 
+    color: "#EF87B5",
+    imagen: "/images/mini.jpg", // Asegúrate de que la imagen esté en la carpeta correcta
+    especificaciones: `
+      Incluye:
+      - Sorpresa: $1.75
+      - Bandeja: $1.75
+      - Platos: $1.50
+      - Invitación: $1.50
+      - Vasos: $1.50
+      - Sombreros: $1.50
+    `
+  },
+  { 
+    id: 3, 
+    nombre: "Producto 3", 
+    categoria: "Decorativos plásticos y de tela", 
+    precio: "$15", 
+    color: "#2F97B3", 
+    imagen: "/images/product3.jpg", 
+    especificaciones: "Incluye cortina decorativa y adornos de mesa."
+  },
+  { 
+    id: 4, 
+    nombre: "Producto 4", 
+    categoria: "Velas", 
+    precio: "$7", 
+    color: "#C9572F", 
+    imagen: "/images/product4.jpg", 
+    especificaciones: "Velas aromáticas, disponibles en varios colores y aromas."
+  },
+  // Agrega más productos con especificaciones adicionales
 ];
 
 // Flechas personalizadas
@@ -59,7 +105,7 @@ export default function TiendaPage() {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState<string | null>(null);
 
   const productosFiltrados = categoriaSeleccionada
-    ? productos.filter((producto) => producto.categoria === categoriaSeleccionada)
+    ? productos.filter((producto) => producto && producto.categoria === categoriaSeleccionada)
     : productos;
 
   const manejarFiltrado = (categoria: string) => {
@@ -99,8 +145,8 @@ export default function TiendaPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-8 pt-36 bg-gray-100">
-      <h1 className="text-3xl font-bold text-center text-[#F39200] mb-8">Tienda</h1>
+    <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-8 pt-40 bg-gray-100">
+      {/*<h1 className="text-3xl font-bold text-center text-[#F39200] mb-8">Tienda</h1>*/}
 
       {/* Carrusel de categorías */}
       <div className="mb-8">
@@ -125,7 +171,11 @@ export default function TiendaPage() {
       {/* Lista de productos */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {productosFiltrados.map((producto) => (
-          <ProductoCard key={producto.id} producto={producto} />
+          <Link key={producto.id} href={`/producto/${producto.id}`} legacyBehavior>
+        <a>
+          <ProductoCard producto={{ ...producto,descripcion: undefined, especificaciones: undefined }} />
+        </a>
+          </Link>
         ))}
       </div>
     </div>

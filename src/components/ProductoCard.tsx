@@ -9,6 +9,8 @@ interface ProductoCardProps {
     precio: string;
     color: string;
     imagen: string;
+    descripcion?: string; // Nueva propiedad opcional
+    especificaciones?: string; // Nueva propiedad opcional
   };
 }
 
@@ -27,7 +29,11 @@ const ProductoCard: React.FC<ProductoCardProps> = ({ producto }) => {
         className="object-cover rounded-md mx-auto mb-4"
       />
       <h2 className="text-xl mb-2">{producto.nombre}</h2>
-      <p className="text-lg mb-4">{producto.precio}</p>
+      <p className="text-lg mb-1">{producto.precio}</p>
+      {producto.descripcion && <p className="text-sm mb-2 text-gray-600">{producto.descripcion}</p>}
+      {producto.especificaciones && (
+        <p className="text-sm text-gray-500 mb-4 whitespace-pre-wrap">{producto.especificaciones}</p>
+      )}
       <button
         onClick={handleAddToCart}
         className="bg-[#F39200] text-white px-4 py-2 rounded hover:bg-orange-600 transition-colors"
