@@ -38,7 +38,43 @@ const productos = [
       - Vasos: $1.50
       - Sombreros: $1.50
     `,
-  }
+  },
+  { 
+    id: 3, 
+    nombre: "Combo Descartables de Micke Crack", 
+    categoria: "Combos descartables",
+    descripcion: "Combo completo de artículos descartables temáticos de la Vaca Lola para fiestas infantiles.",
+    precio: "$9.50", 
+    color: "#EF87B5",
+    imagenes: ["/images/mike_crack.jpg"],// Asegúrate de que la imagen esté en la carpeta correcta
+    especificaciones: `
+      Incluye:
+      - Sorpresa: $1.75
+      - Bandeja: $1.75
+      - Platos: $1.50
+      - Invitación: $1.50
+      - Vasos: $1.50
+      - Sombreros: $1.50
+    `
+  },
+  { 
+    id: 4, 
+    nombre: "Combo Descartables de Super Mario", 
+    categoria: "Combos descartables",
+    descripcion: "Combo completo de artículos descartables temáticos de Super Mario para fiestas infantiles.",
+    precio: "$9.50", 
+    color: "#EF87B5",
+    imagenes: ["/images/super_mario.jpg"],// Asegúrate de que la imagen esté en la carpeta correcta
+    especificaciones: `
+      Incluye:
+      - Sorpresa: $1.75
+      - Bandeja: $1.75
+      - Platos: $1.50
+      - Invitación: $1.50
+      - Vasos: $1.50
+      - Sombreros: $1.50
+    `
+  },
   // Agrega más productos aquí
 ];
 

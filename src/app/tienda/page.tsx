@@ -39,7 +39,7 @@ const productos = [
   },
   { 
     id: 2, 
-    nombre: "Combo Descartables de la Minnie", 
+    nombre: "Combo Descartables de Minnie", 
     categoria: "Combos descartables",
     descripcion: "Combo completo de artículos descartables temáticos de la Vaca Lola para fiestas infantiles.",
     precio: "$9.50", 
@@ -57,23 +57,40 @@ const productos = [
   },
   { 
     id: 3, 
-    nombre: "Producto 3", 
-    categoria: "Decorativos plásticos y de tela", 
-    precio: "$15", 
-    color: "#2F97B3", 
-    imagen: "/images/product3.jpg", 
-    especificaciones: "Incluye cortina decorativa y adornos de mesa."
+    nombre: "Combo Descartables de Micke Crack", 
+    categoria: "Combos descartables",
+    descripcion: "Combo completo de artículos descartables temáticos de la Vaca Lola para fiestas infantiles.",
+    precio: "$9.50", 
+    color: "#EF87B5",
+    imagen: "/images/mike_crack.jpg",// Asegúrate de que la imagen esté en la carpeta correcta
+    especificaciones: `
+      Incluye:
+      - Sorpresa: $1.75
+      - Bandeja: $1.75
+      - Platos: $1.50
+      - Invitación: $1.50
+      - Vasos: $1.50
+      - Sombreros: $1.50
+    `
   },
   { 
     id: 4, 
-    nombre: "Producto 4", 
-    categoria: "Velas", 
-    precio: "$7", 
-    color: "#C9572F", 
-    imagen: "/images/product4.jpg", 
-    especificaciones: "Velas aromáticas, disponibles en varios colores y aromas."
+    nombre: "Combo Descartables de Super Mario", 
+    categoria: "Combos descartables",
+    descripcion: "Combo completo de artículos descartables temáticos de Super Mario para fiestas infantiles.",
+    precio: "$9.50", 
+    color: "#EF87B5",
+    imagen: "/images/super_mario.jpg",// Asegúrate de que la imagen esté en la carpeta correcta
+    especificaciones: `
+      Incluye:
+      - Sorpresa: $1.75
+      - Bandeja: $1.75
+      - Platos: $1.50
+      - Invitación: $1.50
+      - Vasos: $1.50
+      - Sombreros: $1.50
+    `
   },
-  // Agrega más productos con especificaciones adicionales
 ];
 
 // Flechas personalizadas
