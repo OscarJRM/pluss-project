@@ -75,6 +75,26 @@ const productos = [
       - Sombreros: $1.50
     `
   },
+  {
+    id: 5,
+    nombre: "Globos R9 x 100",
+    categoria: "Globos",
+    descripcion: "Bolsa de 100 globos de alta calidad, perfectos para decoraciones festivas.",
+    precio: "$4.00",
+    color: "#F39200",
+    imagenes: [
+      "/images/globo_rojo.jpg", // Asegúrate de que la imagen esté en la carpeta correcta
+      "/images/globo_azul.jpg",
+      "/images/globo_morado.jpg",
+      "/images/globo_verde.jpg"
+    ],
+    especificaciones: `
+      Incluye:
+      - Precio unitario: $0.10
+      - Precio por docena: $1.00
+    `
+  }
+  
   // Agrega más productos aquí
 ];
 
