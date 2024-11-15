@@ -3,7 +3,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { CartProvider } from "@/context/CartContext"; // Import CartProvider
 
+// Font imports
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -15,24 +17,29 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+// Metadata
 export const metadata: Metadata = {
   title: "PLUSS",
   description: "Tienes todo para tu fiesta en un solo lugar",
 };
 
+// RootLayout Component
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="es">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        {/* Wrap everything in CartProvider */}
+        <CartProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

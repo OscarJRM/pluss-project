@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
+import { useCart } from "@/context/CartContext";
 
 const productos = [
   {
@@ -102,6 +103,7 @@ const ProductoPage = () => {
   const params = useParams();
   const productoId = params?.id ? parseInt(Array.isArray(params.id) ? params.id[0] : params.id) : null;
   const producto = productos.find((p) => p.id === productoId);
+  const { addToCart } = useCart();
 
   if (!producto) {
     return <p>Producto no encontrado</p>;
@@ -109,6 +111,16 @@ const ProductoPage = () => {
 
   const [imagenSeleccionada, setImagenSeleccionada] = useState(producto.imagenes ? producto.imagenes[0] : null);
   const [variacionSeleccionada, setVariacionSeleccionada] = useState(producto.variaciones ? producto.variaciones[0] : null);
+ 
+  const handleAddToCart = () => {
+    addToCart({
+      id: producto.id,
+      name: producto.nombre,
+      price: parseFloat(producto.precio.replace('$', '')), // Convert price to a number
+      quantity: 1,
+      imagen: producto.imagenes[0],
+    });
+  };
 
   return (
     <div className="container mx-auto sm:px-6 md:px-8 lg:px-12 xl:px-20 py-8 pt-40 bg-gray-100">
@@ -158,7 +170,7 @@ const ProductoPage = () => {
           )}
 
           {/* Botón Añadir al Carrito */}
-          <button className="mt-4 w-full bg-[#EF87B5] text-white py-3 rounded-md hover:bg-[#F39200] transition-colors">
+          <button onClick={handleAddToCart} className="mt-4 w-full bg-[#EF87B5] text-white py-3 rounded-md hover:bg-[#F39200] transition-colors">
             Añadir al Carrito
           </button>
         </div>

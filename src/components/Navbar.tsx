@@ -2,10 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, MapPin, Facebook, Instagram, Music2 } from 'lucide-react';
+import { Phone, MapPin, Facebook, Instagram, Music2, ShoppingCart } from 'lucide-react';
+import CartSidebar from './CardSidebar';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const toggleCart = () => setIsCartOpen(!isCartOpen);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,9 +28,9 @@ const Navbar = () => {
             {/* Dirección con enlace a Google Maps */}
             <div className="flex items-center space-x-2 group">
               <MapPin className="w-4 h-4 group-hover:animate-bounce" />
-              <a 
-                href="https://maps.app.goo.gl/ZP15RCkkTqzUc2Ca9" 
-                target="_blank" 
+              <a
+                href="https://maps.app.goo.gl/ZP15RCkkTqzUc2Ca9"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm hidden md:inline transform transition-transform duration-300 group-hover:translate-x-1 hover:underline"
               >
@@ -43,22 +47,28 @@ const Navbar = () => {
               </div>
 
               <div className="flex space-x-4">
-                <a href="https://facebook.com/PlussFiestas" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   className="transform transition-all duration-300 hover:scale-110 hover:text-blue-400">
+                <a
+                  href="https://facebook.com/PlussFiestas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transform transition-all duration-300 hover:scale-110 hover:text-blue-400"
+                >
                   <Facebook className="w-4 h-4" />
                 </a>
-                <a href="https://instagram.com/Pluss.fiestas" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   className="transform transition-all duration-300 hover:scale-110 hover:text-pink-400">
+                <a
+                  href="https://instagram.com/Pluss.fiestas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transform transition-all duration-300 hover:scale-110 hover:text-pink-400"
+                >
                   <Instagram className="w-4 h-4" />
                 </a>
-                <a href="https://tiktok.com/@Pluss.fiestas" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   className="transform transition-all duration-300 hover:scale-110 hover:text-gray-200">
+                <a
+                  href="https://tiktok.com/@Pluss.fiestas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transform transition-all duration-300 hover:scale-110 hover:text-gray-200"
+                >
                   <Music2 className="w-4 h-4" />
                 </a>
               </div>
@@ -84,8 +94,8 @@ const Navbar = () => {
           {/* Enlaces de navegación */}
           <div className="flex justify-center space-x-8 text-[#F39200] font-semibold text-lg">
             {['Inicio', 'Nosotros', 'Tienda', 'Nuestros Servicios', 'Contáctenos'].map((item) => (
-              <Link 
-                key={item} 
+              <Link
+                key={item}
                 href={item === 'Inicio' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
                 className="relative font-semibold text-lg group"
               >
@@ -96,8 +106,16 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
+
+          {/* Icono de carrito de compras */}
+          <button onClick={toggleCart} className="relative">
+            <ShoppingCart className="text-[#F39200]" size={24} />
+          </button>
         </div>
       </nav>
+
+      {/* Sidebar del carrito */}
+      <CartSidebar isOpen={isCartOpen} onClose={toggleCart} />
     </div>
   );
 };

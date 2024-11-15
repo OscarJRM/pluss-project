@@ -1,6 +1,8 @@
 // components/ProductoCard.tsx
+"use client";
 import React from 'react';
 import Image from 'next/image';
+import { useCart } from '@/context/CartContext';
 
 interface ProductoCardProps {
   producto: {
@@ -9,14 +11,22 @@ interface ProductoCardProps {
     precio: string;
     color: string;
     imagen: string;
-    descripcion?: string; // Nueva propiedad opcional
-    especificaciones?: string; // Nueva propiedad opcional
+    descripcion?: string;
+    especificaciones?: string;
   };
 }
 
 const ProductoCard: React.FC<ProductoCardProps> = ({ producto }) => {
+  const { addToCart } = useCart();
+
   const handleAddToCart = () => {
-    alert(`Añadido al carrito: ${producto.nombre}`);
+    addToCart({
+      id: producto.id,
+      name: producto.nombre,
+      price: parseFloat(producto.precio.replace('$', '')), // Convert price to a number
+      quantity: 1,
+      imagen: producto.imagen,
+    });
   };
 
   return (
