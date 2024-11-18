@@ -10,6 +10,31 @@ interface CartSidebarProps {
 
 const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose }) => {
   const { cart, removeFromCart, clearCart, updateCartItemQuantity } = useCart();
+  const phoneNumber = "593959906175";
+
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+  };
+
+  const generateWhatsAppMessage = () => {
+    const message = cart
+      .map((item) => `- ${item.name} (${item.quantity} x $${item.price.toFixed(2)})`)
+      .join("\n");
+    return `Hola, he seleccionado estos productos en su sitio web y deseo más información:\n${message}\nTotal: $${calculateTotal()}`;
+  };
+
+  const handleSendToWhatsApp = () => {
+    const message = generateWhatsAppMessage();
+    navigator.clipboard.writeText(message); // Automatically copy message to clipboard
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, "_blank");
+  };
+
+  const handleCopyToClipboard = () => {
+    const message = generateWhatsAppMessage();
+    navigator.clipboard.writeText(message);
+    alert("Mensaje copiado al portapapeles");
+  };
 
   return (
     <>
@@ -50,7 +75,9 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose }) => {
                 {/* Product Info */}
                 <div className="flex-grow">
                   <h3 className="font-semibold text-black">{item.name}</h3>
-                  <p className="text-black">${item.price.toFixed(2)} x {item.quantity}</p>
+                  <p className="text-black">
+                    ${item.price.toFixed(2)} x {item.quantity}
+                  </p>
                   <div className="flex items-center space-x-2 mt-2">
                     {/* Decrease Quantity */}
                     <button
@@ -87,10 +114,24 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose }) => {
               </div>
             ))}
 
+            {/* Total */}
+            <div className="mt-4 text-lg font-bold text-black">
+              Total: ${calculateTotal()}
+            </div>
+
+            {/* WhatsApp Button */}
+            <button
+              onClick={handleSendToWhatsApp}
+              className="bg-green-500 text-white py-2 rounded w-full mt-4 hover:bg-green-600 transition"
+            >
+              Enviar a WhatsApp
+            </button>
+
+          
             {/* Clear Cart Button */}
             <button
               onClick={clearCart}
-              className="bg-red-500 text-white py-2 rounded w-full hover:bg-red-600 transition"
+              className="bg-red-500 text-white py-2 rounded w-full mt-2 hover:bg-red-600 transition"
             >
               Vaciar carrito
             </button>
