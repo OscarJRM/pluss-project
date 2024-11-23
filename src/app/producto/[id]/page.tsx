@@ -168,11 +168,11 @@ const productos = [
   
             {/* Selección de Cantidad */}
             <div className="flex items-center space-x-4">
-              <button onClick={handleDecrease} className="px-3 py-1 bg-gray-200 rounded text-lg hover:bg-gray-300">
+              <button onClick={handleDecrease} className="px-3 py-1 bg-black rounded text-lg hover:bg-gray-700">
                 -
               </button>
-              <span className="text-lg font-bold">{cantidad}</span>
-              <button onClick={handleIncrease} className="px-3 py-1 bg-gray-200 rounded text-lg hover:bg-gray-300">
+              <span className="text-lg font-bold text-black">{cantidad}</span>
+              <button onClick={handleIncrease} className="px-3 py-1 bg-black rounded text-lg hover:bg-gray-700">
                 +
               </button>
             </div>
