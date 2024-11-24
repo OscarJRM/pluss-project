@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
               ].map((item, index) => (
                 <span 
                   key={index}
-                  className="bg-white text-[#F39200] px-3 py-1.5 rounded-full text-sm hover:bg-yellow-200 hover:text-[#F39200] transform hover:scale-105 transition-all duration-300"
+                  className="bg-white text-[#F39200] px-3 py-1.5 rounded-full hover:bg-yellow-200 hover:text-[#F39200] transform hover:scale-105 transition-all duration-300"
                 >
                   {item}
                 </span>

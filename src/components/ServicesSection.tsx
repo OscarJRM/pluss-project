@@ -3,7 +3,7 @@ import { Cake, Cookie, Gift } from 'lucide-react';
 
 const ServicesSection = () => {
   const services = [
-    {
+    { 
       icon: <Gift className="w-12 h-12" />,
       title: "Artículos de Fiesta y Decoración",
       description: "Todo lo que necesitas para decorar y ambientar tu fiesta con los mejores artículos y accesorios."
