@@ -21,7 +21,7 @@ const categorias = [
 const productos = [
   { 
     id: 1, 
-    nombre: "Combo Descartables de la Vaca Lola", 
+    nombre: "Combo Descartables de la Vaca Lola",
     categoria: "Combos descartables",
     descripcion: "Combo completo de artículos descartables temáticos de la Vaca Lola para fiestas infantiles.",
     precio: "$9.50", 

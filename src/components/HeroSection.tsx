@@ -48,7 +48,7 @@ const HeroSection = () => {
 
             <div className="flex gap-4">
               <Link 
-                href="/productos"
+                href="/tienda"
                 className="inline-block px-8 py-4 bg-[#F39200] text-white font-bold rounded-full hover:bg-[#F39200]/90 transform hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 VER PRODUCTOS

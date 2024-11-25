@@ -40,7 +40,7 @@ export default function RootLayout({
         <CartProvider>
           <Navbar />
           {children}
-          <HeroSection />
+
           <ServicesSection />
           <Footer />
         </CartProvider>

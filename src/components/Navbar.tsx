@@ -92,7 +92,7 @@ const Navbar = () => {
           </div>
 
           {/* Enlaces de navegación */}
-          <div className="flex justify-center space-x-8 text-[#F39200] font-semibold text-lg">
+          <div className="flex justify-center space-x-8 text-[#F39200] font-semibold ">
             {['Inicio', 'Nosotros', 'Tienda', 'Nuestros Servicios', 'Contáctenos'].map((item) => (
               <Link
                 key={item}
