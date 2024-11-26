@@ -83,7 +83,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <Image
-              src="/images/plusslogo.jpg"
+              src="/images/plussLogo1.jpg"
               alt="Logo de Pluss"
               width={80}
               height={80}

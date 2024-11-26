@@ -11,30 +11,28 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/api/placeholder/1920/600')",
+          backgroundImage: "url('/images/pluss.jpg')", // Update the path to your image
         }}
       />
 
       <div className="container mx-auto px-4 relative z-20">
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Left side - Image */}
-          <div className="bg-white/90 p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
-            <div className="relative aspect-video">
-              <div className="absolute -top-6 -left-6">
-                <div className="animate-bounce">
-                  <div className="w-12 h-12 rounded-full bg-[#F39200]" />
-                </div>
-              </div>
-              <div className="absolute -bottom-6 -right-6">
-                <div className="animate-bounce delay-300">
-                  <div className="w-12 h-12 rounded-full bg-pink-400" />
-                </div>
-              </div>
-              <h1 className="text-7xl font-bold text-center py-12 bg-gradient-to-r from-[#F39200] to-pink-500 bg-clip-text text-transparent">
-                PLUSS
-              </h1>
-            </div>
-          </div>
+{/* Left side - Image */}
+<div className="bg-cover bg-center bg-no-repeat p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500" style={{ backgroundImage: `url('/images/plussLogo2.jpg')` }}>
+  <div className="relative aspect-video">
+    <div className="absolute -top-6 -left-6">
+      <div className="animate-bounce">
+        <div className="w-12 h-12 rounded-full bg-[#F39200]" />
+      </div>
+    </div>
+    <div className="absolute -bottom-6 -right-6">
+      <div className="animate-bounce delay-300">
+        <div className="w-12 h-12 rounded-full bg-pink-400" />
+      </div>
+    </div>
+  </div>
+</div>
+
 
           {/* Right side - Text content */}
           <div className="text-white space-y-6">
