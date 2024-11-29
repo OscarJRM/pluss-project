@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[600px] flex items-center">
+    <section className="relative min-h-[600px] flex items-center pt-16 pb-16 md:pt-0">
       {/* Background overlay with gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40 z-10" />
 
@@ -19,7 +19,7 @@ const HeroSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left side - Image */}
           <div 
-            className="bg-cover bg-center bg-no-repeat p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+            className="bg-cover bg-center bg-no-repeat p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500 overflow-hidden"
             style={{ backgroundImage: `url('/images/plussLogo2.jpg')` }}
           >
             <div className="relative aspect-video">
