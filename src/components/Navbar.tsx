@@ -8,8 +8,10 @@ import CartSidebar from './CardSidebar';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleCart = () => setIsCartOpen(!isCartOpen);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +27,6 @@ const Navbar = () => {
       <div className={`bg-[#F39200] text-white transition-all duration-300 ${isScrolled ? 'py-1' : 'py-2'}`}>
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
           <div className="flex justify-between items-center">
-            {/* Dirección con enlace a Google Maps */}
             <div className="flex items-center space-x-2 group">
               <MapPin className="w-4 h-4 group-hover:animate-bounce" />
               <a
@@ -80,7 +81,6 @@ const Navbar = () => {
       {/* Navbar principal */}
       <nav className={`bg-white shadow-md transition-all duration-300 relative ${isScrolled ? 'pt-4 pb-2' : 'pt-6 pb-4'}`}>
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center">
             <Image
               src="/images/plussLogo1.jpg"
@@ -91,8 +91,7 @@ const Navbar = () => {
             />
           </div>
 
-          {/* Enlaces de navegación */}
-          <div className="flex justify-center space-x-8 text-[#F39200] font-semibold ">
+          <div className="hidden lg:flex justify-center space-x-8 text-[#F39200] font-semibold">
             {['Inicio', 'Nosotros', 'Tienda', 'Nuestros Servicios', 'Contáctenos'].map((item) => (
               <Link
                 key={item}
@@ -107,14 +106,42 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Icono de carrito de compras */}
-          <button onClick={toggleCart} className="relative">
-            <ShoppingCart className="text-[#F39200]" size={24} />
-          </button>
+          <div className="flex items-center space-x-4">
+            <button onClick={toggleCart} className="relative">
+              <ShoppingCart className="text-[#F39200]" size={24} />
+            </button>
+
+            <button onClick={toggleMenu} className="lg:hidden">
+              <div className="space-y-1">
+                <span className="block w-6 h-0.5 bg-[#F39200]" />
+                <span className="block w-6 h-0.5 bg-[#F39200]" />
+                <span className="block w-6 h-0.5 bg-[#F39200]" />
+              </div>
+            </button>
+          </div>
         </div>
+
+        {isMenuOpen && (
+          <div className="lg:hidden bg-white shadow-md py-4 max-h-[50vh] overflow-y-auto">
+            <div className="flex flex-col items-center space-y-4 text-[#F39200] font-semibold">
+              {['Inicio', 'Nosotros', 'Tienda', 'Nuestros Servicios', 'Contáctenos'].map((item) => (
+                <Link
+                  key={item}
+                  href={item === 'Inicio' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
+                  className="relative font-semibold text-lg group"
+                  onClick={toggleMenu}
+                >
+                  <span className="relative z-10 transition-colors duration-300 group-hover:text-[#EF87B5]">
+                    {item}
+                  </span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EF87B5] transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
 
-      {/* Sidebar del carrito */}
       <CartSidebar isOpen={isCartOpen} onClose={toggleCart} />
     </div>
   );
