@@ -7,8 +7,8 @@ const HeroCarousel2 = () => {
   const slides = [
     {
       image: '/images/bigImg1.jpg', // Cambia a tus imágenes
-      heading: 'Bienvenidos a Tu Tienda de Fiestas y Decoración',
-      text: 'Encuentra todo lo que necesitas para hacer de tu celebración un momento inolvidable. Desde globos y piñatas hasta decoración para bodas y quinceañeras. ¡Explora nuestras categorías y ponte en contacto con nosotros para realizar tus pedidos!',
+      heading: 'Tu Tienda de Fiestas y Decoración',
+      text: 'Encuentra todo lo que necesitas para hacer de tu celebración un momento inolvidable.',
     },
     {
       image: '/images/bigImg2.jpg',
