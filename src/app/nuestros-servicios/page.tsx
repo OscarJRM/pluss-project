@@ -95,7 +95,7 @@ const NuestrosServiciosPage = () => {
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "url('/images/pluss.jpg')",
+              backgroundImage: "url('/images/bigImg2.jpg')",
               opacity: 0.3
             }}
           />

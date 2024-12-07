@@ -92,7 +92,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex justify-center space-x-8 text-[#F39200] font-semibold">
-            {['Inicio', 'Nosotros', 'Tienda', 'Nuestros Servicios', 'Contáctenos'].map((item) => (
+            {['Inicio', 'Nosotros', 'Tienda', 'Nuestros Servicios', 'Contacto'].map((item) => (
               <Link
                 key={item}
                 href={item === 'Inicio' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
