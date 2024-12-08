@@ -8,59 +8,68 @@ import {
 
 const NuestrosServiciosPage = () => {
   const [activeService, setActiveService] = useState<number | null>(null);
+  const [visibleDetails, setVisibleDetails] = useState<number | null>(null);
+
+  // Use a separate state for controlling visibility with delay
+  const handleMouseEnter = (index: number) => {
+    setActiveService(index);
+    setVisibleDetails(index);
+  };
+
+  const handleMouseLeave = (index:number) => {
+    setActiveService(null);
+    // Delay hiding the details to allow for smooth transition
+    setTimeout(() => {
+      if (visibleDetails === index) {
+        setVisibleDetails(null);
+      }
+    }, 300);
+  };
 
   const mainServices = [
     {
-      icon: <Gift className="w-16 h-16" />,
-      title: "Artículos de Fiesta y Decoración",
-      description: "Transformamos espacios ordinarios en extraordinarios con nuestra amplia gama de artículos decorativos.",
+      icon: <Gift size={32} />,
+      color: "bg-[#F39200]",
+      title: "Artículos de Fiesta",
+      description: "Todo lo necesario para decorar y ambientar tu celebración.",
       details: [
-        "Globos y arreglos personalizados",
-        "Decoración temática completa",
-        "Centros de mesa únicos",
-        "Accesorios de fiesta",
-        "Elementos decorativos premium"
-      ],
-      color: "bg-pink-500"
+        "Globos y decoraciones",
+        "Temáticas variadas",
+        "Personalización disponible"
+      ]
     },
     {
-      icon: <Cake className="w-16 h-16" />,
-      title: "Animación de Fiestas Infantiles",
-      description: "Creamos momentos mágicos e inolvidables para los más pequeños con nuestro servicio de animación.",
+      icon: <Cake size={32} />,
+      color: "bg-[#EF87B5]",
+      title: "Animación Infantil",
+      description: "Entretenimiento profesional para los más pequeños.",
       details: [
-        "Shows interactivos",
-        "Personajes disfrazados",
-        "Juegos organizados",
-        "Actividades temáticas",
-        "Pintacaritas profesional"
-      ],
-      color: "bg-purple-500"
+        "Animadores expertos",
+        "Juegos divertidos",
+        "Shows temáticos"
+      ]
     },
     {
-      icon: <Cookie className="w-16 h-16" />,
-      title: "Bocaditos y Catering",
-      description: "Deliciosas opciones gastronómicas para complementar perfectamente tu celebración.",
+      icon: <Cookie size={32} />,
+      color: "bg-[#2F97B3]",
+      title: "Bocaditos",
+      description: "Deliciosos aperitivos para complementar tu evento.",
       details: [
-        "Bocaditos dulces y salados",
-        "Mesas de dulces",
-        "Snacks personalizados",
+        "Dulces y salados",
         "Opciones vegetarianas",
-        "Presentación gourmet"
-      ],
-      color: "bg-orange-500"
+        "Presentación elegante"
+      ]
     },
     {
-      icon: <PartyPopper className="w-16 h-16" />,
-      title: "Juguetería y Piñatería",
-      description: "Todo lo necesario para garantizar la diversión y entretenimiento en tu evento.",
+      icon: <PartyPopper size={32} />,
+      color: "bg-[#C9572F]",
+      title: "Piñatería",
+      description: "Gran variedad de piñatas y juguetes para tu fiesta.",
       details: [
-        "Piñatas personalizadas",
-        "Juguetes para sorpresas",
-        "Regalos temáticos",
-        "Juegos de grupo",
-        "Artículos para premios"
-      ],
-      color: "bg-blue-500"
+        "Diseños personalizados",
+        "Rellenos variados",
+        "Todos los tamaños"
+      ]
     }
   ];
 
@@ -112,45 +121,55 @@ const NuestrosServiciosPage = () => {
 
       {/* Servicios Principales */}
       <section className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {mainServices.map((service, index) => (
-            <div
-              key={index}
-              className="relative group"
-              onMouseEnter={() => setActiveService(index)}
-              onMouseLeave={() => setActiveService(null)}
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {mainServices.map((service, index) => (
+          <div
+            key={index}
+            className="relative group"
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={() => handleMouseLeave(index)}
+          >
+            <div className={`rounded-2xl p-6 h-full bg-white shadow-lg 
+              transform transition-all duration-500 ease-in-out
+              ${activeService === index ? 'scale-105' : 'hover:scale-102'}`}
             >
-              <div className={`rounded-2xl p-6 h-full bg-white shadow-lg 
-                transform transition-all duration-300 
-                ${activeService === index ? 'scale-105' : 'hover:scale-102'}`}
-              >
-                <div className={`${service.color} text-white p-4 rounded-full w-max mb-6 
-                  transform transition-transform group-hover:rotate-12`}>
-                  {service.icon}
-                </div>
-                
-                <h3 className="text-xl font-bold mb-4 text-gray-800">
-                  {service.title}
-                </h3>
-                
-                <p className="text-gray-600 mb-4">
-                  {service.description}
-                </p>
+              <div className={`${service.color} text-white p-4 rounded-full w-max mb-6 
+                transform transition-transform duration-500 ease-in-out
+                ${activeService === index ? 'rotate-12' : ''}`}>
+                {service.icon}
+              </div>
+              
+              <h3 className="text-xl font-bold mb-4 text-gray-800">
+                {service.title}
+              </h3>
+              
+              <p className="text-gray-600 mb-4">
+                {service.description}
+              </p>
 
-                <div className={`space-y-2 transition-all duration-300 
-                  ${activeService === index ? 'opacity-100' : 'opacity-0 h-0'}`}>
-                  {service.details.map((detail, idx) => (
-                    <div key={idx} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 rounded-full bg-[#F39200]" />
-                      <span className="text-gray-700">{detail}</span>
-                    </div>
-                  ))}
-                </div>
+              <div className={`space-y-2 transition-all duration-500 ease-in-out
+                ${visibleDetails === index ? 
+                  'opacity-100 max-h-[200px] transform translate-y-0' : 
+                  'opacity-0 max-h-0 transform translate-y-4 overflow-hidden'}`}
+              >
+                {service.details.map((detail, idx) => (
+                  <div 
+                    key={idx} 
+                    className="flex items-center space-x-2 transition-all duration-300"
+                    style={{
+                      transitionDelay: `${idx * 100}ms`
+                    }}
+                  >
+                    <div className={`w-2 h-2 rounded-full ${service.color}`} />
+                    <span className="text-gray-700">{detail}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        ))}
+      </div>
+    </section>
 
       {/* Proceso de Servicio */}
       <section className="bg-white py-16">

@@ -67,19 +67,14 @@ const NosotrosPage = () => {
           <div className="bg-white p-8 rounded-2xl shadow-lg transform hover:scale-105 transition-transform duration-300">
             <h2 className="text-3xl font-bold text-[#F39200] mb-4">Misión</h2>
             <p className="text-gray-700 leading-relaxed">
-              Ser la empresa líder en la provisión de artículos y servicios para fiestas, 
-              comprometidos con la excelencia y la innovación, garantizando momentos inolvidables 
-              para nuestros clientes a través de productos de calidad y un servicio excepcional.
+            Crear momentos inolvidables para los clientes a través de la creación del kit perfecto para fiestas de cumpleaños infantiles que los clientes deseen, teniendo estos kit un diseño innovador y personalizado para cada cliente, así logrando no ser la tienda típica de eventos de cumpleaños.
             </p>
           </div>
           
           <div className="bg-white p-8 rounded-2xl shadow-lg transform hover:scale-105 transition-transform duration-300">
             <h2 className="text-3xl font-bold text-[#F39200] mb-4">Visión</h2>
             <p className="text-gray-700 leading-relaxed">
-              Convertirnos en la referencia nacional en el mercado de artículos para fiestas, 
-              expandiendo nuestra presencia y manteniendo los más altos estándares de calidad 
-              y servicio, siendo reconocidos por nuestra innovación y compromiso con la felicidad 
-              de nuestros clientes.
+            Convertir la marca a nivel provincial como la marca de productos y eventos de cumpleaños para aquellos que buscan productos exclusivos y personalizados, destacándose por sus diseños personalizados y compromiso en la calidad de sus productos, convirtiéndola en una marca conocida a nivel nacional.
             </p>
           </div>
         </div>

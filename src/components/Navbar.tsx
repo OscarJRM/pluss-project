@@ -124,7 +124,7 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="lg:hidden bg-white shadow-md py-4 max-h-[50vh] overflow-y-auto">
             <div className="flex flex-col items-center space-y-4 text-[#F39200] font-semibold">
-              {['Inicio', 'Nosotros', 'Tienda', 'Nuestros Servicios', 'Contáctenos'].map((item) => (
+              {['Inicio', 'Nosotros', 'Tienda', 'Nuestros Servicios', 'Contacto'].map((item) => (
                 <Link
                   key={item}
                   href={item === 'Inicio' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
