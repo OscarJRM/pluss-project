@@ -105,17 +105,16 @@ const productos = [
     const productoId = params?.id ? parseInt(Array.isArray(params.id) ? params.id[0] : params.id, 10) : null;
     const producto = productos.find((p) => p.id === productoId);
     const { cart, addToCart } = useCart();
+      const [imagenSeleccionada, setImagenSeleccionada] = useState(producto?.imagenes?.[0] || "");
+  const [cantidad, setCantidad] = useState(1);
   
     if (!producto) {
       return <p>Producto no encontrado</p>;
     }
   
-    const [imagenSeleccionada, setImagenSeleccionada] = useState(producto.imagenes[0]);
-    const [cantidad, setCantidad] = useState(1);
-  
-    const handleAddToCart = () => {
+   const handleAddToCart = () => {
       const existingItem = cart.find((item) => item.id === producto.id);
-  
+ 
       if (existingItem) {
         toast.error("Este producto ya está en el carrito.");
       } else {

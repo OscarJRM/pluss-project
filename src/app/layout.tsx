@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { CartProvider } from "@/context/CartContext"; // Import CartProvider
 import ServicesSection from "@/components/ServicesSection";
-import HeroSection from "@/components/HeroSection";
 
 // Font imports
 const geistSans = localFont({

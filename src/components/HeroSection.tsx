@@ -11,7 +11,7 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/images/pluss.jpg')",
+          backgroundImage: "url('/images/local.jpeg')",
         }}
       />
 
