@@ -30,13 +30,7 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose }) => {
     window.open(whatsappURL, "_blank");
   };
 
-  const handleCopyToClipboard = () => {
-    const message = generateWhatsAppMessage();
-    navigator.clipboard.writeText(message);
-    alert("Mensaje copiado al portapapeles");
-  };
-
-  return (
+    return (
     <>
       {/* Overlay */}
       <div
